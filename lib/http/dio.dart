@@ -1,24 +1,9 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 
-
 final options = BaseOptions(
-  baseUrl: 'https://random-data-api.com/',
-  connectTimeout: 240000,
-  receiveTimeout: 240000,
+    baseUrl: 'https://random-data-api.com/',
+    connectTimeout: const Duration(milliseconds: 240000),
+    receiveTimeout: const Duration(milliseconds: 240000),
 );
 
-final dio = Dio(options)..interceptors.addAll(
-  <Interceptor>[
-    LogInterceptor(
-      requestBody: true,
-      responseBody: true,
-      logPrint: (res) {
-        log(res.toString(), name: 'BE');
-      },
-    ),
-  ],
-);
-
-CancelToken cancelToken = CancelToken();
+final dio = Dio(options);

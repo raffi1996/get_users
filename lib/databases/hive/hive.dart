@@ -9,27 +9,35 @@ class Keys {
 
 class UserDB {
 
-  static final _factsBox = Hive.box(Keys.users);
+  static final _userBox = Hive.box(Keys.users);
 
   static Future<UserDB> getInstance() async {
     await Hive.openBox(Keys.users);
-
     return UserDB();
   }
 
   static void put(UserModel value) {
     final json = jsonEncode(value);
-    _factsBox.add(json);
+    _userBox.add(json);
   }
 
   static List<UserModel> get() {
-    final values = _factsBox.values;
+    final values = _userBox.values;
     return values
         .map((e) => UserModel.fromJson(json.decode(e.toString())))
         .toList();
   }
 
   static void delete() {
-    _factsBox.deleteAll(_factsBox.keys);
+    _userBox.deleteAll(_userBox.keys);
+  }
+
+
+  static void openBox() async {
+    await Hive.openBox(Keys.users);
+  }
+
+  static void closeBox() async {
+    await Hive.close();
   }
 }

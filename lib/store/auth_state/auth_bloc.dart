@@ -6,16 +6,16 @@ import '../../models/user_model/user_model.dart';
 import 'package:equatable/equatable.dart';
 
 part 'auth_state.dart';
+
 part 'auth_event.dart';
 
-
 class UserBloc extends Bloc<UserEvent, UserState> {
-
   UserBloc() : super(UserLoadingState()) {
     on<LoadUserEvent>((event, emit) async {
       emit(UserLoadingState());
-      try{
+      try {
         final user = await AuthRepositories.getUser();
+        UserDB.openBox();
         UserDB.put(user);
         emit(UserLoadedState(user));
       } catch (e) {
@@ -23,5 +23,4 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       }
     });
   }
-
 }

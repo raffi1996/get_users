@@ -1,8 +1,7 @@
-import 'package:cat_trivia/pages/dashboard_sreen.dart';
-import 'package:cat_trivia/router.dart';
 import 'package:flutter/material.dart' hide Router;
 
 import 'constants/routes.dart';
+import 'router.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);

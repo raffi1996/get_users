@@ -1,18 +1,17 @@
-import 'package:cat_trivia/pages/history_facts_screen.dart';
-import 'package:cat_trivia/pages/dashboard_sreen.dart';
 import 'package:flutter/material.dart';
 
 import 'constants/routes.dart';
+import 'pages/dashboard/dashboard_page.dart';
+import 'pages/user_history_page/user_history_page.dart';
 
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-
       case Routes.dashboard:
-        return MaterialPageRoute(builder: (_) => const DashboardScreen());
+        return MaterialPageRoute(builder: (_) => const DashboardPage());
 
       case Routes.historyFacts:
-        return MaterialPageRoute(builder: (_) => const HistoryFactsScreen());
+        return MaterialPageRoute(builder: (_) => const UserHistoryPage());
 
       default:
         return MaterialPageRoute(
