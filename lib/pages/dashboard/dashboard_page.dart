@@ -6,19 +6,10 @@ import '../../themes/app_colors.dart';
 import 'widgets/dashboard_footer.dart';
 import 'widgets/user_content.dart';
 
-class DashboardPage extends StatefulWidget {
+class DashboardPage extends StatelessWidget {
   const DashboardPage({
     Key? key,
   }) : super(key: key);
-
-  @override
-  State<DashboardPage> createState() => _DashboardPageState();
-}
-
-class _DashboardPageState extends State<DashboardPage> {
-  double get bodyHeight => MediaQuery.of(context).size.height - 100;
-
-  double get heightFactor => MediaQuery.of(context).size.height / 100;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +58,7 @@ class _DashboardPageState extends State<DashboardPage> {
                           ),
                         ),
                       DashboardFooter(
-                        getNewUser: getNewUser,
+                        getNewUser: _getNewUser,
                       ),
                     ],
                   ),
@@ -80,7 +71,7 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 
-  void getNewUser(BuildContext context) {
+  void _getNewUser(BuildContext context) {
     BlocProvider.of<UserBloc>(context).add(LoadUserEvent());
   }
 }

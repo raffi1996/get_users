@@ -1,6 +1,12 @@
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/cupertino.dart';
 
+class Assets {
+  Assets._();
+
+  static const splashScreen = 'assets/images/splash_screen_image.png';
+}
+
 extension ExtensionOnString on String {
   ExtendedImage imageNetwork({
     double? height,

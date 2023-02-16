@@ -1,9 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_users/constants/app_texts.dart';
 import 'package:get_users/utils/widget_extension.dart';
 
 class HistoryButton extends StatelessWidget {
-  final VoidCallback onTap;
+  final AsyncValueSetter<BuildContext> onTap;
 
   const HistoryButton({
     Key? key,
@@ -21,7 +22,9 @@ class HistoryButton extends StatelessWidget {
           bottom: MediaQuery.of(context).padding.bottom + 24,
         ),
         child: ElevatedButton(
-          onPressed: onTap,
+          onPressed: () async {
+            await onTap(context);
+          },
           child: const Text(
             AppTexts.deleteAll,
           ),

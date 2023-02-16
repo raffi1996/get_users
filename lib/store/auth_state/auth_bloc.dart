@@ -15,8 +15,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       emit(UserLoadingState());
       try {
         final user = await AuthRepositories.getUser();
-        UserDB.openBox();
-        UserDB.put(user);
+        await UserDB.put(user);
         emit(UserLoadedState(user));
       } catch (e) {
         emit(UserErrorState(e.toString()));

@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Flutter Get Users',
-      initialRoute: Routes.dashboard,
+      initialRoute: Routes.splashScreen,
       onGenerateRoute: Router.generateRoute,
     );
   }
